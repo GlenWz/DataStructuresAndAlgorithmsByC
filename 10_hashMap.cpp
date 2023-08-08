@@ -23,9 +23,12 @@ int hashCollision(int key){
     return 0;
 }
 
-//创建哈希表
+//初始化哈希表
 HashMap *createHashmap(){
     HashMap *hashMap=(HashMap *)malloc(sizeof(HashMap));
+    for(int i=0;i<TABLE_SIZE;i++){
+    	hashMap->data[i]=NULL;
+	}
     return hashMap;
 }
 
@@ -57,6 +60,16 @@ void deleteHash(HashMap* table, int key) {
     }
 }
 
+//遍历 
+void traverseHashMap(HashMap* table) {
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        if (table->data[i] != NULL) {
+            printf("Index %d: Key = %d, Value = %d\n", i, table->data[i]->key, table->data[i]->value);
+        }
+    }
+}
+
+
 int main(){
     HashMap *hash=createHashmap();
     setValue(hash,8,1008);
@@ -67,5 +80,6 @@ int main(){
     printf("%d\n",ret);
     ret= getValue(hash,99);
     printf("%d\n",ret);
+    traverseHashMap(hash);
     return 0;
 }
