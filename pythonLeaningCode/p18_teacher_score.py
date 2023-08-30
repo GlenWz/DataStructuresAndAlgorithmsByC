@@ -6,7 +6,7 @@ class TxtWriter:
         with open(url,"w",encoding="UTF-8") as txtFlie:
             for line in iptList:
                 txtFlie.write(",".join(line)+"\n")
-
+ 
 class TxtReader:
 
     def readTeacher(self,url:str)->dict:
